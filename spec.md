@@ -1,37 +1,24 @@
 # Yashwant Classes
 
 ## Current State
-Naya project hai. Abhi koi code nahi hai.
+Full-stack app with backend (Motoko) and React frontend. Features: subjects, important questions, quiz, quiz attempts, admin panel. Seed data includes NCERT-style pre-loaded questions and quizzes.
 
 ## Requested Changes (Diff)
 
 ### Add
-- Home page with Yashwant Classes branding
-- Important Questions section: subject-wise question papers (admin add kar sake, students dekh sake)
-- Quiz section: multiple choice quizzes with timer, score display at the end
-- Admin panel: questions aur quizzes manage karne ke liye (add/edit/delete)
-- Student view: quiz attempt karna, score dekhna, important questions browse karna
-- Subject/topic categories for organizing content
+- Nothing new to add
 
 ### Modify
-- N/A (new project)
+- Remove all pre-loaded questions and quiz questions from seed.ts
+- Keep only subject creation in seed (Mathematics, Science, English, History, Hindi, Geography)
+- App starts empty — admin adds questions and quizzes via Admin Panel
 
 ### Remove
-- N/A (new project)
+- All hardcoded question/answer seed data from seed.ts
+- All hardcoded quiz question seed data from seed.ts
+- All hardcoded quiz creation from seed.ts
 
 ## Implementation Plan
-1. Backend (Motoko):
-   - Subject/category data model
-   - Important questions data model (subject, question text, answer/explanation)
-   - Quiz data model (title, subject, list of MCQ questions with options and correct answer)
-   - Quiz attempt/result tracking
-   - CRUD APIs for admin
-   - Read APIs for students
-
-2. Frontend:
-   - Home page with navigation
-   - Important Questions page: subject filter, question list with answers
-   - Quiz listing page: available quizzes by subject
-   - Quiz attempt page: MCQ with timer, submit, score result
-   - Admin panel: add/edit/delete questions and quizzes
-   - Responsive design for mobile students
+1. Update seed.ts to only create subjects, no questions or quizzes
+2. Backend and all pages remain unchanged
+3. Admin Panel still fully functional for adding content
