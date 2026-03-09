@@ -22,62 +22,61 @@
 
 @layer base {
   :root {
-    --radius: 0.75rem;
+    --radius: 1rem;
 
-    /* Yashwant Classes - Saffron + Navy + Cream palette */
-    --background: 0.97 0.008 75;
-    --foreground: 0.18 0.04 260;
+    /* Nitya Learning App — Bright, playful, child-friendly palette */
+    --background: 0.98 0.005 280;
+    --foreground: 0.15 0.04 265;
 
-    --card: 0.995 0.003 75;
-    --card-foreground: 0.18 0.04 260;
+    --card: 1 0 0;
+    --card-foreground: 0.15 0.04 265;
 
-    --popover: 0.995 0.003 75;
-    --popover-foreground: 0.18 0.04 260;
+    --popover: 1 0 0;
+    --popover-foreground: 0.15 0.04 265;
 
-    /* Saffron orange primary */
-    --primary: 0.68 0.18 55;
-    --primary-foreground: 0.99 0.002 75;
+    /* Vibrant purple-pink primary */
+    --primary: 0.60 0.22 310;
+    --primary-foreground: 0.99 0.002 0;
 
-    /* Light saffron secondary */
-    --secondary: 0.92 0.04 75;
-    --secondary-foreground: 0.22 0.05 260;
+    /* Soft lavender secondary */
+    --secondary: 0.93 0.05 290;
+    --secondary-foreground: 0.22 0.06 265;
 
-    --muted: 0.93 0.015 75;
-    --muted-foreground: 0.52 0.03 260;
+    --muted: 0.94 0.03 285;
+    --muted-foreground: 0.52 0.04 265;
 
-    /* Warm accent */
-    --accent: 0.90 0.06 75;
-    --accent-foreground: 0.22 0.05 260;
+    --accent: 0.90 0.08 260;
+    --accent-foreground: 0.15 0.06 265;
 
     --destructive: 0.577 0.245 27.325;
     --destructive-foreground: 0.985 0 0;
 
-    --border: 0.88 0.02 75;
-    --input: 0.88 0.02 75;
-    --ring: 0.68 0.18 55;
+    --border: 0.88 0.03 280;
+    --input: 0.88 0.03 280;
+    --ring: 0.60 0.22 310;
 
-    /* Subject color accents */
-    --subject-math: 0.70 0.20 250;
-    --subject-science: 0.65 0.18 155;
-    --subject-english: 0.68 0.18 55;
-    --subject-history: 0.62 0.16 30;
+    /* Learning section colors */
+    --color-counting: 0.70 0.20 250;
+    --color-fruits: 0.68 0.22 145;
+    --color-vegetables: 0.62 0.20 160;
+    --color-matching: 0.68 0.22 55;
+    --color-blanks: 0.62 0.22 310;
 
-    --chart-1: 0.68 0.18 55;
-    --chart-2: 0.65 0.18 155;
-    --chart-3: 0.70 0.20 250;
-    --chart-4: 0.62 0.16 30;
-    --chart-5: 0.62 0.20 300;
+    --chart-1: 0.68 0.22 55;
+    --chart-2: 0.65 0.20 145;
+    --chart-3: 0.70 0.22 250;
+    --chart-4: 0.62 0.22 310;
+    --chart-5: 0.62 0.20 30;
 
-    --sidebar: 0.995 0.003 75;
-    --sidebar-foreground: 0.18 0.04 260;
-    --sidebar-primary: 0.68 0.18 55;
-    --sidebar-primary-foreground: 0.99 0.002 75;
-    --sidebar-accent: 0.92 0.04 75;
-    --sidebar-accent-foreground: 0.22 0.05 260;
-    --sidebar-border: 0.88 0.02 75;
-    --sidebar-ring: 0.68 0.18 55;
+    --sidebar: 1 0 0;
+    --sidebar-foreground: 0.15 0.04 265;
+    --sidebar-primary: 0.60 0.22 310;
+    --sidebar-primary-foreground: 0.99 0.002 0;
+    --sidebar-accent: 0.93 0.05 290;
+    --sidebar-accent-foreground: 0.22 0.06 265;
+    --sidebar-border: 0.88 0.03 280;
+    --sidebar-ring: 0.60 0.22 310;
 
-    /* Saffron brand colors */
     --brand-saffron: 0.72 0.19 55;
     --brand-navy: 0.22 0.08 265;
     --brand-cream: 0.97 0.008 75;
@@ -114,31 +113,118 @@
     background: linear-gradient(135deg, oklch(var(--brand-saffron)) 0%, oklch(var(--brand-gold)) 100%);
   }
 
-  .navy-bg {
-    background-color: oklch(var(--brand-navy));
+  .counting-gradient {
+    background: linear-gradient(135deg, oklch(0.70 0.20 250) 0%, oklch(0.65 0.22 280) 100%);
   }
 
-  .saffron-text {
-    color: oklch(var(--brand-saffron));
+  .fruits-gradient {
+    background: linear-gradient(135deg, oklch(0.68 0.22 130) 0%, oklch(0.72 0.20 90) 100%);
   }
 
-  .quiz-option-hover {
-    transition: all 0.15s ease;
+  .vegetables-gradient {
+    background: linear-gradient(135deg, oklch(0.62 0.20 160) 0%, oklch(0.68 0.18 140) 100%);
   }
 
-  .quiz-option-hover:hover {
-    transform: translateX(4px);
+  .matching-gradient {
+    background: linear-gradient(135deg, oklch(0.68 0.22 55) 0%, oklch(0.72 0.18 85) 100%);
   }
 
-  /* Noise texture overlay */
-  .noise-overlay::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
-    background-size: 200px;
-    pointer-events: none;
-    border-radius: inherit;
+  .blanks-gradient {
+    background: linear-gradient(135deg, oklch(0.60 0.22 310) 0%, oklch(0.65 0.20 340) 100%);
+  }
+
+  .squares-gradient {
+    background: linear-gradient(135deg, oklch(0.65 0.22 200) 0%, oklch(0.58 0.22 260) 100%);
+  }
+
+  .squares-quiz-gradient {
+    background: linear-gradient(135deg, oklch(0.58 0.22 240) 0%, oklch(0.62 0.20 280) 100%);
+  }
+
+  .paltu-gradient {
+    background: linear-gradient(135deg, oklch(0.58 0.20 155) 0%, oklch(0.65 0.18 175) 100%);
+  }
+
+  .jangli-gradient {
+    background: linear-gradient(135deg, oklch(0.65 0.20 55) 0%, oklch(0.60 0.22 35) 100%);
+  }
+
+  .home-gradient {
+    background: linear-gradient(160deg, oklch(0.96 0.08 280) 0%, oklch(0.94 0.10 310) 40%, oklch(0.96 0.07 250) 100%);
+  }
+
+  /* Bounce animation for correct answers */
+  @keyframes bounce-in {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.15); }
+    70% { transform: scale(0.95); }
+    100% { transform: scale(1); opacity: 1; }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-8px); }
+    40% { transform: translateX(8px); }
+    60% { transform: translateX(-6px); }
+    80% { transform: translateX(6px); }
+  }
+
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.25); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    33% { transform: translateY(-12px) rotate(5deg); }
+    66% { transform: translateY(-6px) rotate(-3deg); }
+  }
+
+  @keyframes confetti-fall {
+    0% { transform: translateY(-20px) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(100vh) rotate(720deg); opacity: 0; }
+  }
+
+  @keyframes star-burst {
+    0% { transform: scale(0) rotate(0deg); opacity: 1; }
+    50% { transform: scale(1.5) rotate(180deg); opacity: 1; }
+    100% { transform: scale(2) rotate(360deg); opacity: 0; }
+  }
+
+  @keyframes pulse-glow {
+    0%, 100% { box-shadow: 0 0 0 0 oklch(0.60 0.22 310 / 0.4); }
+    50% { box-shadow: 0 0 0 12px oklch(0.60 0.22 310 / 0); }
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+
+  .animate-bounce-in {
+    animation: bounce-in 0.5s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  }
+
+  .animate-shake {
+    animation: shake 0.4s ease-in-out;
+  }
+
+  .animate-pop {
+    animation: pop 0.3s ease-in-out;
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out;
   }
 
   .line-clamp-2 {
@@ -153,5 +239,25 @@
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+  }
+
+  /* Bottom nav safe area */
+  .pb-safe {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom));
+  }
+
+  .child-card {
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 20px 0 oklch(0.15 0.04 265 / 0.1), 0 1px 4px 0 oklch(0.15 0.04 265 / 0.06);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .child-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    box-shadow: 0 12px 40px 0 oklch(0.15 0.04 265 / 0.15), 0 4px 8px 0 oklch(0.15 0.04 265 / 0.08);
+  }
+
+  .child-card:active {
+    transform: scale(0.97);
   }
 }

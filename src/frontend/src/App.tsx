@@ -1,86 +1,82 @@
 import { Toaster } from "@/components/ui/sonner";
-import { useEffect, useState } from "react";
-import { Footer } from "./components/Footer";
-import { Header } from "./components/Header";
-import { useActor } from "./hooks/useActor";
-import { useIsAdmin } from "./hooks/useQueries";
-import { AdminPage } from "./pages/AdminPage";
-import { HomePage } from "./pages/HomePage";
-import { QuestionsPage } from "./pages/QuestionsPage";
-import { QuizAttemptPage } from "./pages/QuizAttemptPage";
-import { QuizzesPage } from "./pages/QuizzesPage";
-import { seedInitialData } from "./utils/seed";
+import { useState } from "react";
+import { AppHeader } from "./components/AppHeader";
+import { BottomNav } from "./components/BottomNav";
+import { BirdsPage } from "./pages/BirdsPage";
+import { CountingPage } from "./pages/CountingPage";
+import { FillBlanks } from "./pages/FillBlanks";
+import { FruitsPage } from "./pages/FruitsPage";
+import { HomeScreen } from "./pages/HomeScreen";
+import { InsectsPage } from "./pages/InsectsPage";
+import { JangliJanwarPage } from "./pages/JangliJanwarPage";
+import { MatchingGame } from "./pages/MatchingGame";
+import { PaltuJanwarPage } from "./pages/PaltuJanwarPage";
+import { RomanCountingPage } from "./pages/RomanCountingPage";
+import { SeasonsPage } from "./pages/SeasonsPage";
+import { SquaresPage } from "./pages/SquaresPage";
+import { SquaresQuizPage } from "./pages/SquaresQuizPage";
+import { TransportPage } from "./pages/TransportPage";
+import { VegetablesPage } from "./pages/VegetablesPage";
 
-type Page = "home" | "questions" | "quizzes" | "quiz-attempt" | "admin";
+export type AppPage =
+  | "home"
+  | "counting"
+  | "roman"
+  | "squares"
+  | "squares-quiz"
+  | "fruits"
+  | "vegetables"
+  | "matching"
+  | "blanks"
+  | "paltu-janwar"
+  | "jangli-janwar"
+  | "insects"
+  | "seasons"
+  | "birds"
+  | "transport";
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState<Page>("home");
-  const [activeQuizId, setActiveQuizId] = useState<bigint | null>(null);
-  const [seeded, setSeeded] = useState(false);
+  const [currentPage, setCurrentPage] = useState<AppPage>("home");
 
-  const { actor } = useActor();
-  const { data: isAdmin } = useIsAdmin();
-
-  // Seed initial data once actor is ready
-  useEffect(() => {
-    if (actor && !seeded) {
-      setSeeded(true);
-      seedInitialData(actor).catch(console.error);
-    }
-  }, [actor, seeded]);
-
-  const handleNavigate = (page: string) => {
-    if (page === "admin" && !isAdmin) return;
-    setCurrentPage(page as Page);
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleStartQuiz = (quizId: bigint) => {
-    setActiveQuizId(quizId);
-    setCurrentPage("quiz-attempt");
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
-
-  const handleBackFromQuiz = () => {
-    setActiveQuizId(null);
-    setCurrentPage("quizzes");
+  const handleNavigate = (page: AppPage) => {
+    setCurrentPage(page);
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
     <div className="min-h-screen flex flex-col bg-background font-body">
-      <Header
-        currentPage={currentPage === "quiz-attempt" ? "quizzes" : currentPage}
-        onNavigate={handleNavigate}
-      />
+      <AppHeader currentPage={currentPage} onNavigate={handleNavigate} />
 
-      <div className="flex-1 flex flex-col">
-        {currentPage === "home" && <HomePage onNavigate={handleNavigate} />}
-        {currentPage === "questions" && <QuestionsPage />}
-        {currentPage === "quizzes" && (
-          <QuizzesPage onStartQuiz={handleStartQuiz} />
+      <main className="flex-1 pb-safe">
+        {currentPage === "home" && <HomeScreen onNavigate={handleNavigate} />}
+        {currentPage === "counting" && <CountingPage />}
+        {currentPage === "roman" && <RomanCountingPage />}
+        {currentPage === "squares" && <SquaresPage />}
+        {currentPage === "squares-quiz" && <SquaresQuizPage />}
+        {currentPage === "fruits" && <FruitsPage />}
+        {currentPage === "vegetables" && <VegetablesPage />}
+        {currentPage === "matching" && <MatchingGame />}
+        {currentPage === "blanks" && <FillBlanks />}
+        {currentPage === "paltu-janwar" && (
+          <PaltuJanwarPage onNavigate={handleNavigate} />
         )}
-        {currentPage === "quiz-attempt" && activeQuizId !== null && (
-          <QuizAttemptPage quizId={activeQuizId} onBack={handleBackFromQuiz} />
+        {currentPage === "jangli-janwar" && (
+          <JangliJanwarPage onNavigate={handleNavigate} />
         )}
-        {currentPage === "admin" && isAdmin && <AdminPage />}
-        {currentPage === "admin" && !isAdmin && (
-          <main className="flex-1 flex items-center justify-center py-16 px-4">
-            <div className="text-center">
-              <div className="text-6xl mb-4">🔒</div>
-              <h2 className="font-display text-2xl font-bold text-foreground mb-2">
-                Access Restricted
-              </h2>
-              <p className="text-muted-foreground">
-                Admin access required. Please login with an admin account.
-              </p>
-            </div>
-          </main>
+        {currentPage === "insects" && (
+          <InsectsPage onNavigate={handleNavigate} />
         )}
-      </div>
+        {currentPage === "seasons" && (
+          <SeasonsPage onNavigate={handleNavigate} />
+        )}
+        {currentPage === "birds" && <BirdsPage onNavigate={handleNavigate} />}
+        {currentPage === "transport" && (
+          <TransportPage onNavigate={handleNavigate} />
+        )}
+      </main>
 
-      <Footer />
-      <Toaster position="top-right" richColors />
+      <BottomNav currentPage={currentPage} onNavigate={handleNavigate} />
+      <Toaster position="top-center" richColors />
     </div>
   );
 }
